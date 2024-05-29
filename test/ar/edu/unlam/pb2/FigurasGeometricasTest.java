@@ -217,7 +217,7 @@ public class FigurasGeometricasTest {
 	@Test
 	public void testCalcularAreaTotalDeLasFiguras() {
 		// Preparación
-		List<Figura> figuras = new ArrayList<>();
+		List<Figura> figuras = new ArrayList<Figura>();
 
 		figuras.add(new Circulo(new Punto(0.0, 0.0), 3.0));
 		figuras.add(new Cuadrado(new Punto(1.0, 1.0), 4.0));
