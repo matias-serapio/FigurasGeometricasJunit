@@ -4,11 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ColeccionFiguras {
-	private List<Figura> figuras;
-
-	public ColeccionFiguras() {
-		this.figuras = new ArrayList<>();
-	}
+	private List<Figura> figuras = new ArrayList<Figura>();
 
 	public void agregarFigura(Figura figura) {
 		this.figuras.add(figura);
@@ -22,7 +18,15 @@ public class ColeccionFiguras {
 		return areaTotal;
 	}
 
+	public Double calcularAreaTotalFiguras() {
+		Double areaTotal = 0.0;
+		for (Figura figura : this.figuras) {
+			areaTotal += figura.area();
+		}
+		return areaTotal;
+	}
+
 	public List<Figura> getFiguras() {
-		return figuras;
+		return this.figuras;
 	}
 }

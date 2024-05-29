@@ -217,31 +217,56 @@ public class FigurasGeometricasTest {
 	@Test
 	public void testCalcularAreaTotalDeLasFiguras() {
 		// Preparación
-		List<Figura> figuras = new ArrayList<Figura>();
+		ColeccionFiguras coleccion = new ColeccionFiguras();
 
-		figuras.add(new Circulo(new Punto(0.0, 0.0), 3.0));
-		figuras.add(new Cuadrado(new Punto(1.0, 1.0), 4.0));
-		figuras.add(new Elipse(new Punto(2.0, 2.0), 5.0, 3.0));
-		figuras.add(new Rectangulo(new Punto(0.0, 0.0), new Punto(4.0, 5.0)));
-		figuras.add(new Circulo(new Punto(1.0, 1.0), 2.0));
-		figuras.add(new Cuadrado(new Punto(2.0, 2.0), 2.0));
-		figuras.add(new Elipse(new Punto(3.0, 3.0), 4.0, 2.0));
-		figuras.add(new Rectangulo(new Punto(0.0, 0.0), new Punto(2.0, 3.0)));
-		figuras.add(new Circulo(new Punto(2.0, 2.0), 1.0));
-		figuras.add(new Cuadrado(new Punto(3.0, 3.0), 1.0));
-
+		// Definición de valores
+		Double radioCirculo1 = 3.0;
+		Double ladoCuadrado1 = 4.0;
+		Double radioMayorElipse1 = 5.0;
+		Double radioMenorElipse1 = 3.0;
+		Double esquinaInferiorIzquierdaX1 = 0.0;
+		Double esquinaInferiorIzquierdaY1 = 0.0;
+		Double esquinaSuperiorDerechaX1 = 4.0;
+		Double esquinaSuperiorDerechaY1 = 5.0;
+		Double radioCirculo2 = 2.0;
+		Double ladoCuadrado2 = 2.0;
+		Double radioMayorElipse2 = 4.0;
+		Double radioMenorElipse2 = 2.0;
+		Double esquinaInferiorIzquierdaX2 = 0.0;
+		Double esquinaInferiorIzquierdaY2 = 0.0;
+		Double esquinaSuperiorDerechaX2 = 2.0;
+		Double esquinaSuperiorDerechaY2 = 3.0;
+		Double radioCirculo3 = 1.0;
+		Double ladoCuadrado3 = 1.0;
+		Double puntoX1 = 0.0;
+		Double puntoY1 = 0.0;
+		Double puntoX2 = 1.0;
+		Double puntoY2 = 1.0;
+		Double puntoX3 = 2.0;
+		Double puntoY3 = 2.0;
+		Double puntoX4 = 3.0;
+		Double puntoY4 = 3.0;
 		Double areaTotalEsperada = 0.0;
-		for (Figura figura : figuras) {
-			areaTotalEsperada += figura.area();
-		}
+
+		// Creación de figuras
+		coleccion.agregarFigura(new Circulo(new Punto(puntoX1, puntoY1), radioCirculo1));
+		coleccion.agregarFigura(new Cuadrado(new Punto(puntoX2, puntoY2), ladoCuadrado1));
+		coleccion.agregarFigura(new Elipse(new Punto(puntoX3, puntoY3), radioMayorElipse1, radioMenorElipse1));
+		coleccion.agregarFigura(new Rectangulo(new Punto(esquinaInferiorIzquierdaX1, esquinaInferiorIzquierdaY1),
+				new Punto(esquinaSuperiorDerechaX1, esquinaSuperiorDerechaY1)));
+		coleccion.agregarFigura(new Circulo(new Punto(puntoX2, puntoY2), radioCirculo2));
+		coleccion.agregarFigura(new Cuadrado(new Punto(puntoX3, puntoY3), ladoCuadrado2));
+		coleccion.agregarFigura(new Elipse(new Punto(puntoX4, puntoY4), radioMayorElipse2, radioMenorElipse2));
+		coleccion.agregarFigura(new Rectangulo(new Punto(esquinaInferiorIzquierdaX2, esquinaInferiorIzquierdaY2),
+				new Punto(esquinaSuperiorDerechaX2, esquinaSuperiorDerechaY2)));
+		coleccion.agregarFigura(new Circulo(new Punto(puntoX3, puntoY3), radioCirculo3));
+		coleccion.agregarFigura(new Cuadrado(new Punto(puntoX4, puntoY4), ladoCuadrado3));
 
 		// Ejecución
-		Double areaTotalObtenida = 0.0;
-		for (Figura figura : figuras) {
-			areaTotalObtenida += figura.area();
-		}
-
+		Double areaTotalObtenida = coleccion.calcularAreaTotal();
+		areaTotalEsperada = coleccion.calcularAreaTotalFiguras();
 		// Contrastación
+
 		assertEquals(areaTotalEsperada, areaTotalObtenida);
 	}
 }
