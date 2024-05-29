@@ -2,6 +2,9 @@ package ar.edu.unlam.pb2;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
 public class FigurasGeometricasTest {
@@ -162,7 +165,7 @@ public class FigurasGeometricasTest {
 	}
 
 	@Test
-	public void testCrearYCalcularAreaCuadrado() {
+	public void testCrearYCalcularAreaCuadradoDeLado4() {
 
 		// Preparación
 		Double puntoX = 0.0;
@@ -180,7 +183,7 @@ public class FigurasGeometricasTest {
 	}
 
 	@Test
-	public void testCrearYMoverCuadrado() {
+	public void testCrearYMoverCuadradodeLado4() {
 
 		// Preparación
 		Double puntoX = 0.0;
@@ -192,8 +195,9 @@ public class FigurasGeometricasTest {
 		Double valorEsperadoY2 = 7.0;
 
 		Cuadrado s = new Cuadrado(new Punto(puntoX, puntoY), lado);
-		s.mover(3.0, 3.0);
+
 		// Ejecución
+		s.mover(3.0, 3.0);
 		Double valorObtenidoX1 = s.getEsquinaInferiorIzquierda().getX();
 
 		Double valorObtenidoY1 = s.getEsquinaInferiorIzquierda().getY();
@@ -208,5 +212,36 @@ public class FigurasGeometricasTest {
 		assertEquals(valorEsperadoX2, valorObtenidoX2);
 		assertEquals(valorEsperadoY2, valorObtenidoY2);
 
+	}
+
+	@Test
+	public void testCalcularAreaTotalDeLasFiguras() {
+		// Preparación
+		List<Figura> figuras = new ArrayList<>();
+
+		figuras.add(new Circulo(new Punto(0.0, 0.0), 3.0));
+		figuras.add(new Cuadrado(new Punto(1.0, 1.0), 4.0));
+		figuras.add(new Elipse(new Punto(2.0, 2.0), 5.0, 3.0));
+		figuras.add(new Rectangulo(new Punto(0.0, 0.0), new Punto(4.0, 5.0)));
+		figuras.add(new Circulo(new Punto(1.0, 1.0), 2.0));
+		figuras.add(new Cuadrado(new Punto(2.0, 2.0), 2.0));
+		figuras.add(new Elipse(new Punto(3.0, 3.0), 4.0, 2.0));
+		figuras.add(new Rectangulo(new Punto(0.0, 0.0), new Punto(2.0, 3.0)));
+		figuras.add(new Circulo(new Punto(2.0, 2.0), 1.0));
+		figuras.add(new Cuadrado(new Punto(3.0, 3.0), 1.0));
+
+		Double areaTotalEsperada = 0.0;
+		for (Figura figura : figuras) {
+			areaTotalEsperada += figura.area();
+		}
+
+		// Ejecución
+		Double areaTotalObtenida = 0.0;
+		for (Figura figura : figuras) {
+			areaTotalObtenida += figura.area();
+		}
+
+		// Contrastación
+		assertEquals(areaTotalEsperada, areaTotalObtenida);
 	}
 }

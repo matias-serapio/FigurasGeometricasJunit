@@ -7,11 +7,11 @@ public class ColeccionFiguras {
 	private List<Figura> figuras;
 
 	public ColeccionFiguras() {
-		figuras = new ArrayList<>();
+		this.figuras = new ArrayList<>();
 	}
 
 	public void agregarFigura(Figura figura) {
-		figuras.add(figura);
+		this.figuras.add(figura);
 	}
 
 	public Double calcularAreaTotal() {
@@ -20,5 +20,9 @@ public class ColeccionFiguras {
 			areaTotal += figura.area();
 		}
 		return areaTotal;
+	}
+
+	public List<Figura> getFiguras() {
+		return figuras;
 	}
 }
